@@ -72,7 +72,6 @@ namespace BossFight
                             heroMana -= fireBallCost;
                             canExplosion = true;
                         }
-                        
                         else
                         {
                             Console.WriteLine("У вас недостаточно маны. Демон смеётся вам в лицо.");
@@ -90,7 +89,6 @@ namespace BossFight
                             heroMana -= explosionCost;
                             canExplosion = false;
                         }
-                        
                         else
                         {
                             Console.WriteLine("Вы не можете прочитать это заклинание.");
@@ -110,7 +108,6 @@ namespace BossFight
                             {
                                 heroHealth = heroMaxHealth;
                             }
-                            
                             if (heroMana > heroMaxMana)
                             {
                                 heroMana = heroMaxMana;
