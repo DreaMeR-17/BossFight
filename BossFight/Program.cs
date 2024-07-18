@@ -112,8 +112,7 @@ namespace BossFight
                             {
                                 heroMana = heroMaxMana;
                             }
-                        }
-                        
+                        }                       
                         else
                         {
                             Console.WriteLine("У вас больше нет зелий. Бейтесь до последнего.");
@@ -135,12 +134,10 @@ namespace BossFight
             {
                 Console.WriteLine("Вы победили демона, но от нанесенных ран тоже погибли.\nВас запомнят навсегда.");
             }
-
             else if (bossHealth <= 0)
             {
                 Console.WriteLine("Вы победили демона! Теперь во всем мире будет спокойно.\nВ вашу честь будет пирушка.");
             }
-
             else if (heroHealth <= 0)
             {
                 Console.WriteLine("К сожалению демон был слишком силен и вы погибли.\nДемону теперь никто не мешает уничтожить всё на свете.");
