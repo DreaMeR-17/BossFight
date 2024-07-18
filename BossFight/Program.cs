@@ -6,14 +6,14 @@ namespace BossFight
     {
         static void Main(string[] args)
         {
-            Random random = new Random();
-
-            const string commandAttack = "1";
-            const string commandFireBall = "2";
-            const string commandExplosion = "3";
-            const string commandHealing = "4";
+            const string CommandAttack = "1";
+            const string CommandFireBall = "2";
+            const string CommandExplosion = "3";
+            const string CommandHealing = "4";
 
             string desiredOperation;
+
+            Random random = new Random();
 
             int bossHealth = 1000;
             int bossDamage;
@@ -32,7 +32,7 @@ namespace BossFight
             int heroPotion = 125;
             int amountPotion = 3;
 
-            bool isCanExplosion = false;
+            bool canExplosion = false;
 
             Console.WriteLine("Герой! Вы должны победить этого демона!\n");
 
@@ -58,28 +58,29 @@ namespace BossFight
 
                 switch (desiredOperation)
                 {
-                    case commandAttack:
+                    case CommandAttack:
                         Console.WriteLine($"Вы наносите демона обычную атаку в размере {heroDamage} единиц урона.");
                         bossHealth -= heroDamage;
                         break;
 
-                    case commandFireBall:
+                    case CommandFireBall:
                         if (heroMana >= fireBallCost)
                         {
                             Console.WriteLine($"Вы отправляете в демона огненный шар и наносите {heroFireBallDamage} урона.");
                             Console.WriteLine($"Вы потратили {fireBallCost} маны.");
                             bossHealth -= heroFireBallDamage;
                             heroMana -= fireBallCost;
-                            isCanExplosion = true;
+                            canExplosion = true;
                         }
+                        
                         else
                         {
                             Console.WriteLine("У вас недостаточно маны. Демон смеётся вам в лицо.");
                         }
                         break;
 
-                    case commandExplosion:
-                        if (isCanExplosion == true && heroMana >= explosionCost)
+                    case CommandExplosion:
+                        if (canExplosion == true && heroMana >= explosionCost)
                         {
                             Console.WriteLine($"Вы начинает кричать слово EXPLOSION что сбивает с толку демона не меньше " +
                                 $"чем большое красное поле под его ногами. Вы нанесли {heroExplosionDamage} урона.");
@@ -87,8 +88,9 @@ namespace BossFight
                             Console.WriteLine("Перед тем как снова закричать и напугать демона, нужно отправить огненный шар.");
                             bossHealth -= heroExplosionDamage;
                             heroMana -= explosionCost;
-                            isCanExplosion = false;
+                            canExplosion = false;
                         }
+                        
                         else
                         {
                             Console.WriteLine("Вы не можете прочитать это заклинание.");
@@ -96,22 +98,25 @@ namespace BossFight
                         }
                         break;
 
-                    case commandHealing:
+                    case CommandHealing:
                         if (amountPotion > 0)
                         {
                             Console.WriteLine($"Вы достаете зелье и используете его. Восстановлено {heroPotion} очков маны и здоровья.");
                             amountPotion--;
                             heroHealth += heroPotion;
                             heroMana += heroPotion;
+                            
                             if (heroHealth > heroMaxHealth)
                             {
                                 heroHealth = heroMaxHealth;
                             }
+                            
                             if (heroMana > heroMaxMana)
                             {
                                 heroMana = heroMaxMana;
                             }
                         }
+                        
                         else
                         {
                             Console.WriteLine("У вас больше нет зелий. Бейтесь до последнего.");
